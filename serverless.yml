@@ -1,0 +1,40 @@
+service: ai-contact-center-integration-starter
+frameworkVersion: "4"
+
+provider:
+  name: aws
+  runtime: nodejs22.x
+  region: ${opt:region, "us-east-1"}
+  stage: ${opt:stage, "dev"}
+  architecture: arm64
+  memorySize: 256
+  timeout: 10
+  logRetentionInDays: 30
+  environment:
+    STAGE: ${sls:stage}
+    SIGNING_SECRET: ${env:SIGNING_SECRET, ""}
+    AI_CONFIDENCE_THRESHOLD: ${env:AI_CONFIDENCE_THRESHOLD, "0.80"}
+    AI_PROVIDER: ${env:AI_PROVIDER, "deterministic"}
+  httpApi:
+    cors:
+      allowedOrigins:
+        - https://example.com
+      allowedHeaders:
+        - Content-Type
+        - X-Correlation-Id
+        - X-Signature
+      allowedMethods:
+        - GET
+        - POST
+
+functions:
+  api:
+    handler: src/handler.handler
+    events:
+      - httpApi:
+          path: /health
+          method: GET
+      - httpApi:
+          path: /v1/interactions/assist
+          method: POST
+
