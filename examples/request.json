@@ -1,0 +1,14 @@
+{
+  "interactionId": "interaction-demo-001",
+  "channel": "voice",
+  "utterance": "I need help understanding my latest statement.",
+  "context": {
+    "customerSegment": "preferred",
+    "authenticated": true,
+    "language": "en-US",
+    "queue": "customer-care",
+    "internalCustomerId": "not-forwarded",
+    "accountBalance": "not-forwarded"
+  }
+}
+
