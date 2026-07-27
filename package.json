@@ -1,0 +1,18 @@
+{
+  "name": "ai-contact-center-integration-starter",
+  "version": "1.0.0",
+  "description": "Secure, vendor-neutral contact-center and AI-agent integration starter.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check src/*.js"
+  },
+  "devDependencies": {
+    "serverless": "^4.22.0"
+  },
+  "license": "MIT"
+}
+
